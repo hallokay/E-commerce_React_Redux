@@ -1,24 +1,47 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { BiShoppingBag } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-import styled from "styled-components";
+import { product } from "../data/data";
+import {CartItem} from './index'
 
+// import { product } from '../data/data'
 const Card = () => {
   const [cardOpen, setCardOpen] = useState(false);
 
-  const closeCard = () => {
-    setCardOpen(null);
-  }
   return (
     <>
-      <CardWrap>
+      <CardWrap onClick={() => setCardOpen(!cardOpen)}>
         <BiShoppingBag className="cardIcon" />
         <span className="flexCenter">{}1</span>
       </CardWrap>
+      {cardOpen && <Overlay />}
+      {cardOpen && (
+        <CartItemContainer>
+          <div className="flex">
+            <h2>Shopping Cart</h2>
+            <button onClick={() => setCardOpen(!cardOpen)}>
+              <AiOutlineClose className="icon" />
+            </button>
+          </div>
+        
+          <CartList>
+            {/* <li>tkrhk qk</li> */}
+            {product.slice(0,2).map((item) => (
+                <CartItem key={item.id} item={item}/>
+            ))}
 
-      {!cardOpen && <CartItem>
-        <h1>11111</h1>
-        </CartItem>}
+          </CartList>
+
+          <CheckOut>
+            <button>
+              <span>priceed To Checkout</span>
+              {/* <label htmlFor="">${total}</label> */}
+            </button>
+
+          </CheckOut>
+        </CartItemContainer>
+      )}
     </>
   );
 };
@@ -42,8 +65,17 @@ const CardWrap = styled.div`
     border-radius: 50%;
   }
 `;
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 77;
+`;
 
-const CartItem = styled.div`
+const CartItemContainer = styled.div`
   position: fixed;
   top: 0;
   right: 0;
@@ -53,6 +85,17 @@ const CartItem = styled.div`
   background: #fff;
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
   z-index: 88;
+
+  .icon {
+    font-size: 25px;
+  }
 `;
+
+const CartList = styled.ul`
+    
+`
+const CheckOut = styled.div`
+
+`
 
 export default Card;
