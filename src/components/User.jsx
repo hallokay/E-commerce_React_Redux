@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { BsBagCheck, AiOutlineHeart, GrHelp, BiLogOut,  IoSettingsOutline } from "../constants/index";
 import styled from "styled-components";
+import { userMenu } from '../constants/index'
 const User = () => {
   const user = true;
   const [profileOpen, setProfileOpen] = useState(false);
@@ -28,19 +28,21 @@ const User = () => {
                 </Link>
                 <h4>kay jeon</h4>
                 <label htmlFor="">chuncheon, korea</label>
-
               </UserInfo>
-                <div>
-                  <button>
-                    <IoSettingsOutline/>
+              <SettingBtn>
+                {userMenu.map((menu, i) => (
+                  <button key={i}>
+                    <span className="icon">{menu.icon}</span>
+                    <h4>{menu.name}</h4>
                   </button>
-                </div>
+                ))}
+              </SettingBtn>
             </OpenProfile>
           )}
         </>
       ) : (
         <>
-          <span>login</span>
+          <LoginBtn>Login</LoginBtn>
         </>
       )}
     </>
@@ -62,7 +64,7 @@ const OpenProfile = styled.div`
   width: 250px;
   top: 80px;
   right: 10px;
-  padding: 5px 10px;
+  padding: 10px 10px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
   background: #fff;
   color: #000;
@@ -85,6 +87,27 @@ const UserInfo = styled.div`
     border-radius: 50%;
     object-fit: cover;
   }
+`;
+
+const SettingBtn = styled.div`
+  padding: 20px 0 10px;
+
+  button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  h4 {
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+  .icon {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+`;
+const LoginBtn = styled.button`
+  margin-left: 25px;
 `;
 
 export default User;
