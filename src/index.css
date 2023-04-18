@@ -57,4 +57,24 @@ a {
     text-decoration: none;
     /* color: var(--text-color); */
 }
+.App {
+    max-width: 95%;
+  margin: auto;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+}
 
+@media screen and (max-width: 768px) {
+  .grid3,
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -53,7 +53,9 @@ position: fixed;
 top: 0;
 padding: 20px;
 width: 100%;
-height: 65px;
+/* height: 65px; */
+background: #fff;
+z-index: 100;
 `;
 const Wrap = styled.div`
   display: flex;

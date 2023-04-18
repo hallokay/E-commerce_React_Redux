@@ -1,14 +1,19 @@
 import React from 'react'
+import { Slider, Order, Product, Category } from "../components";
+import styled from 'styled-components';
 
 const Home = () => {
   return (
- 
- 
-    <div style={{ height: 'calc(100vh + 500px)', margin: '65px'}}>
-      <h1>kjkjkjkjkj</h1>
-    </div>
- 
+    <Main>
+      <Slider />
+      <Order />
+      <Category />
+      <Product />
+    </Main>
   );
 }
+const Main = styled.main`
+  margin-top: 80px;
 
+`
 export default Home
