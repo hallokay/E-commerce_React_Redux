@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const Slider = () => {
   return (
     <Container className="slider">
-      <div className="grid">
+      <div className="container grid">
         {slide.map((item, i) => (
           <div className="box" key={i}>
             <ImgWrap>
