@@ -14,4 +14,3 @@ export const userMenu = [
   { name: "help", icon: <GrHelp /> },
   { name: "log out", icon: <BiLogOut /> },
 ];
-

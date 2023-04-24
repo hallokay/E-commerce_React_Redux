@@ -71,18 +71,6 @@ a {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 15px;
 }
-.container {
-  max-width: 95%;
-  margin: auto;
-}
-footer {
-  margin-top: 50px;
-  padding: 10px;
-}
-footer .icon {
-  font-size: 20px;
-  margin-left: 10px;
-}
 
 @media screen and (max-width: 768px) {
   .grid3,
