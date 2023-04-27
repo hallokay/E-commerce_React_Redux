@@ -19,7 +19,7 @@ const Slider = () => {
     </Container>
   );
 }
-const Container = styled.div`
+const Container = styled.section`
 /* margin-top: 65px; */
 padding-top: 65px;
 /* z-index: -1; */

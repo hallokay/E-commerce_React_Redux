@@ -21,7 +21,7 @@ const Order = () => {
     </OrderSection>
   );
 }
-const OrderSection = styled.div`
+const OrderSection = styled.section`
   margin-top: 50px;
   .container {
     padding: 50px 30px;
