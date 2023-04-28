@@ -7,4 +7,5 @@ import Slider from "./Slider";
 import Order from "./Order";
 import Product from "./Product";
 import Category from "./Category";
-export { Header, Footer, Card, User, CartItem, Slider, Category, Order, Product };
+import ProductCart from './ProductCart'
+export { Header, Footer, Card, User, CartItem, Slider, Category, Order, Product, ProductCart };
