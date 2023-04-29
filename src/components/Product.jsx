@@ -14,7 +14,9 @@ const Product = () => {
   )
 }
 const ProductSection = styled.section`
-
-
-`
+  margin-top: 50px;
+  .container {
+    grid-gap: 1rem;
+  }
+`;
 export default Product
