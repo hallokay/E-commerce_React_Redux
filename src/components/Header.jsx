@@ -65,7 +65,7 @@ const Wrap = styled.div`
 const Logo = styled.div``
 
 const Search = styled.div`
-  border: 2px solid #212121;
+  /* border: 2px solid #212121; */
   border-radius: 6px;
   font-size: 15px;
   padding: 0 20px;

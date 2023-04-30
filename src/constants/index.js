@@ -8,7 +8,7 @@ import { BiLogOut } from "react-icons/bi";
 export { BsBagCheck, AiOutlineHeart, GrHelp, BiLogOut, IoSettingsOutline };
 
 export const userMenu = [
-  { name: "my account", icon: <IoSettingsOutline /> },
+  { name: "my account", to:'/account', icon: <IoSettingsOutline /> },
   { name: "my order", icon: <BsBagCheck /> },
   { name: "wishlist", icon: <AiOutlineHeart /> },
   { name: "help", icon: <GrHelp /> },

@@ -2,18 +2,20 @@ import React from 'react'
 import back from "../../images/my-account.jpg";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import { Section } from "./AuthCss"; 
 
 const Register = () => {
   return (
     <>
-      <RegisterSection>
+      <Section>
         <div className="container">
           <div className="backImg">
             <img src={back} alt="backimg" />
             <div className="text">
-              <p>Register</p>
+              <span>Register</span>
               <h1>My Account</h1>
             </div>
+          </div>
             <form>
               <label htmlFor="email">Email address</label>
               <input name="email" type="text" required />
@@ -26,9 +28,8 @@ const Register = () => {
               <button className="button">Register</button>
               <Link to="/login">Login</Link>
             </form>
-          </div>
         </div>
-      </RegisterSection>
+      </Section>
     </>
   );
 }

@@ -29,12 +29,14 @@ const User = () => {
                 <h4>kay jeon</h4>
                 <label htmlFor="">chuncheon, korea</label>
               </UserInfo>
+
               <SettingBtn>
                 {userMenu.map((menu, i) => (
-                  <button key={i}>
-                    <span className="icon">{menu.icon}</span>
-                    <h4>{menu.name}</h4>
-                  </button>
+                    <Link to={menu?.to} key={i}>
+                      <span className="icon">{menu.icon}</span>
+                      <h4>{menu.name}</h4>
+                    </Link>
+             
                 ))}
               </SettingBtn>
             </OpenProfile>
@@ -92,7 +94,7 @@ const UserInfo = styled.div`
 const SettingBtn = styled.div`
   padding: 20px 0 10px;
 
-  button {
+   a{
     display: flex;
     align-items: center;
     margin-bottom: 10px;
