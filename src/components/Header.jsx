@@ -16,7 +16,7 @@ const Header = () => {
 
   const handleScroll = () => {
     const currentScrollPosition = window.pageYOffset;
-    if(currentScrollPosition > 100) {
+    if(currentScrollPosition > 1300) {
       setShowHeader(false);
     } else {
       setShowHeader(true);

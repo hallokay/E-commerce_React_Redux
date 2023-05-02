@@ -2,26 +2,31 @@ import React from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { useDispatch } from 'react-redux';
+import {addToCart} from '../fetures/cartSlice'
 const ProductCart = ({ item: { id, cover, name, price } }) => {
+  const dispatch = useDispatch()
+  const addToCart = () => {
+    dispatch(addToCart({id, name, cover, price}));
+  }
   return (
     <>
       <BoxItems className="box boxItem" id="product">
         <div className="img">
           <Link>
             <img src={cover} alt={name} />
-         </Link>
+          </Link>
         </div>
         <div className="details">
           <h3>${price}</h3>
           <p>{name}</p>
-          <button>
+          <button onClick={addToCart}>
             <AiOutlinePlusCircle />
           </button>
         </div>
       </BoxItems>
     </>
-  )
+  );
 }
 const BoxItems = styled.div`
   transition: 0.5s;
