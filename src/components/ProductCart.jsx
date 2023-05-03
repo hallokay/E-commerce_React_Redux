@@ -3,11 +3,12 @@ import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import {addToCart} from '../fetures/cartSlice'
+import { addToCart } from '../fetures/cartSlice'
+
 const ProductCart = ({ item: { id, cover, name, price } }) => {
   const dispatch = useDispatch()
-  const addToCart = () => {
-    dispatch(addToCart({id, name, cover, price}));
+  const addCart = () => {
+    dispatch(addToCart({ id, name, cover, price }));
   }
   return (
     <>
@@ -20,7 +21,7 @@ const ProductCart = ({ item: { id, cover, name, price } }) => {
         <div className="details">
           <h3>${price}</h3>
           <p>{name}</p>
-          <button onClick={addToCart}>
+          <button onClick={addCart}>
             <AiOutlinePlusCircle />
           </button>
         </div>

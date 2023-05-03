@@ -2,18 +2,25 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { BiShoppingBag } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-import { product } from "../data/data";
-import {CartItem} from './index'
+import { CartItem } from './index'
+import { useSelector } from "react-redux";
 
-// import { product } from '../data/data'
+
 const Card = () => {
   const [cardOpen, setCardOpen] = useState(false);
+  const cartItems = useSelector(state => state.cart.itemsList);
+  const quantity = useSelector(state => state.cart.totalQuantity);
 
+  //total
+  let total = 0;
+  cartItems.forEach(item => {
+    total += item.totalPrice;
+  })
   return (
     <>
       <CardWrap onClick={() => setCardOpen(!cardOpen)}>
         <BiShoppingBag className="cardIcon" />
-        <span className="flexCenter">{}1</span>
+        <span className="flexCenter">{quantity}</span>
       </CardWrap>
       {cardOpen && <Overlay />}
       {cardOpen && (
@@ -24,11 +31,11 @@ const Card = () => {
               <AiOutlineClose className="icon" />
             </button>
           </div>
-        
+
           <CartList>
-            {/* <li>tkrhk qk</li> */}
-            {product.slice(0,2).map((item) => (
-                <CartItem key={item.id} item={item}/>
+
+            {cartItems.map((item) => (
+              <CartItem key={item.id} item={item} />
             ))}
 
           </CartList>
@@ -36,7 +43,7 @@ const Card = () => {
           <CheckOut>
             <button>
               <span>priceed To Checkout</span>
-              {/* <label htmlFor="">${total}</label> */}
+              <label>${total}</label>
             </button>
 
           </CheckOut>
