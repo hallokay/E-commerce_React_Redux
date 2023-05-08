@@ -1,12 +1,15 @@
-import {useState, useEffect} from 'react'
-import styled from 'styled-components';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 // import Medicine from "../../assets/images/Medicine.svg";
 import { AiOutlineSearch } from "react-icons/ai";
-import { Link } from 'react-router-dom';
-import {Card, User} from './index.js'
- 
+import { Link } from "react-router-dom";
+import { Card, User } from "./index.js";
+import { useSelector } from "react-redux";
+
 const Header = () => {
   const [showHeader, setShowHeader] = useState(true);
+  const isLogin = useSelector((state) => state.auth.isLogin);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -16,16 +19,17 @@ const Header = () => {
 
   const handleScroll = () => {
     const currentScrollPosition = window.pageYOffset;
-    if(currentScrollPosition > 1300) {
-      setShowHeader(false);
+    if (currentScrollPosition > 1300) {
+      // setShowHeader(false);
+      setShowHeader(true);
     } else {
       setShowHeader(true);
-
     }
-  }
+  };
+
   return (
     <>
-      {showHeader && (
+      {/* {showHeader && ( */}
         <HeaderContainer style={{ display: showHeader ? "block" : "none" }}>
           <Wrap className="flex">
             <Logo>
@@ -33,36 +37,40 @@ const Header = () => {
                 <img src="logo" alt="logo" />
               </Link>
             </Logo>
+            {isLogin && (
+              <> 
             <Search className="flex">
               <AiOutlineSearch className="searchIcon" />
               <input type="text" placeholder="Search..." />
             </Search>
-            <Account className="flexCenter">
-              <Card />
-              <User />
-            </Account>
+              <Account className="flexCenter">
+                <Card />
+                <User />
+              </Account>
+              </>
+            )}
           </Wrap>
         </HeaderContainer>
-      )}
+      {/* )} */}
     </>
-  ); 
-}
+  );
+};
 
 const HeaderContainer = styled.header`
-position: fixed;
-top: 0;
-padding: 20px;
-width: 100%;
-/* height: 65px; */
-background: #fff;
-z-index: 100;
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  width: 100%;
+  /* height: 65px; */
+  background: #fff;
+  z-index: 100;
 `;
 const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-const Logo = styled.div``
+const Logo = styled.div``;
 
 const Search = styled.div`
   /* border: 2px solid #212121; */
@@ -86,7 +94,5 @@ const Search = styled.div`
     display: none;
   }
 `;
-const Account = styled.div`
-
-`;
-export default Header
+const Account = styled.div``;
+export default Header;

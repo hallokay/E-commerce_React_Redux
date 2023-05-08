@@ -3,7 +3,17 @@ import back from "../../images/my-account.jpg";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Section } from './AuthCss'; 
+import { useDispatch } from 'react-redux';
+import { login, logOut} from '../../fetures/authSlice.js'
+
 const Login = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login())
+  }
+
   return (
     <>
       <Section>
@@ -15,16 +25,14 @@ const Login = () => {
               <h1>My Account</h1>
             </div>
           </div>
-            <form>
-              <label htmlFor="email">Username or Email address</label>
-              <input name="email" type="text" required />
-              <label htmlFor="user">Username * </label>
-              <input name="user" type="text" required />
-              <label htmlFor="psw">Password *</label>
-              <input name="psw" type="text" required />
-              <button className="button">Login</button>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">Username or Email address</label>
+            <input name="email" type="text" required />
+            <label htmlFor="psw">Password </label>
+            <input name="psw" type="text" required />
+            <button className="button">Login</button>
             <Link to="/register">Register</Link>
-            </form>
+          </form>
         </div>
       </Section>
     </>

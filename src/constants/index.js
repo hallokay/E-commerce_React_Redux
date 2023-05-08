@@ -12,6 +12,6 @@ export const userMenu = [
   { name: "my order", icon: <BsBagCheck /> },
   { name: "wishlist", icon: <AiOutlineHeart /> },
   { name: "help", icon: <GrHelp /> },
-  { name: "log out", icon: <BiLogOut /> },
+  // { name: "log out", icon: <BiLogOut /> },
 ];
 

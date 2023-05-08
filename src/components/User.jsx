@@ -2,15 +2,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { userMenu } from '../constants/index'
+import { BiLogOut } from "react-icons/bi";
+import { useDispatch } from 'react-redux';
+import { logOut} from '../fetures/authSlice.js'
+
 const User = () => {
+  const dispatch = useDispatch();
+
   const user = true;
   const [profileOpen, setProfileOpen] = useState(false);
+ 
   return (
     <>
       {/* 유저정보가 있으면 프로필화면 아니면 로그인 */}
       {user ? ( //유저 정보가 있을때 프로필 열기
         <>
-          <ProfileBtn onClick={() => setProfileOpen(true)}>
+          <ProfileBtn onClick={() => setProfileOpen(!profileOpen)}>
             <img
               src="https://cdn-icons-png.flaticon.com/512/2202/2202112.png"
               alt="user-img"
@@ -32,12 +39,18 @@ const User = () => {
 
               <SettingBtn>
                 {userMenu.map((menu, i) => (
-                    <Link to={menu?.to} key={i}>
-                      <span className="icon">{menu.icon}</span>
-                      <h4>{menu.name}</h4>
-                    </Link>
-             
+                  <Link to={menu?.to} key={i}>
+                    <span className="icon">{menu.icon}</span>
+                    <h4>{menu.name}</h4>
+                  </Link>
                 ))}
+
+                <Link onClick={() => dispatch(logOut())}>
+                  <span className="icon">
+                    <BiLogOut />
+                  </span>
+                  <h4>log out</h4>
+                </Link>
               </SettingBtn>
             </OpenProfile>
           )}

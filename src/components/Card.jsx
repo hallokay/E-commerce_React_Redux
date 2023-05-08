@@ -8,8 +8,8 @@ import { useSelector } from "react-redux";
 
 const Card = () => {
   const [cardOpen, setCardOpen] = useState(false);
-  const cartItems = useSelector(state => state.cart.itemsList);
-  const quantity = useSelector(state => state.cart.totalQuantity);
+  const quantity = useSelector((state) => state.cart.totalQuantity);
+  const cartItems = useSelector((state) => state.cart.itemsList);
 
   //total
   let total = 0;

@@ -4,26 +4,25 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../fetures/cartSlice'
 
-const CartItem = ({ item: { id, cover, name, price, quantity, totalPrice } }) => {
+const CartItem = ({
+  item: { id, cover, name, price, quantity, totalPrice },
+}) => {
   const dispatch = useDispatch();
 
   const inCartItems = () => {
     dispatch(addToCart({ id, name, price }));
-
-  }
+  };
 
   const decsCartItems = () => {
-    dispatch(removeFromCart({ id }))
-  }
-
+    dispatch(removeFromCart(id));
+  };
 
   return (
     <Item>
-
       <div className="cartContent">
         <ItemImg>
-          <img src={cover} alt='img' />
-          <button className='flexCenter'>
+          <img src={cover} alt="img" />
+          <button className="flexCenter">
             <AiOutlineClose />
           </button>
         </ItemImg>
@@ -34,24 +33,21 @@ const CartItem = ({ item: { id, cover, name, price, quantity, totalPrice } }) =>
 
           <div className="price">
             <div className="qty flexCenter">
-              <button className='plus' onClick={inCartItems}>
+              <button className="plus" onClick={inCartItems}>
                 <AiOutlinePlus />
               </button>
               <button>{quantity}</button>
-              <button className='minus' onClick={decsCartItems}>
+              <button className="minus" onClick={decsCartItems}>
                 <AiOutlineMinus />
               </button>
             </div>
-            <p className="priceTitle">
-              ${totalPrice}
-            </p>
+            <p className="priceTitle">${totalPrice}</p>
           </div>
         </div>
       </div>
-
     </Item>
   );
-}
+};
 const Item = styled.li`
 margin: 40px 0;
 display: flex;
