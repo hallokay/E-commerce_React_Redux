@@ -9,8 +9,8 @@ function App() {
   const navigate = useNavigate();
 
   const isLogin = useSelector(state => state.auth.isLogin);
-  const cartItems = useSelector(state => state.cart.itemList)
-console.log("isLogin", isLogin);
+  // const cartItems = useSelector(state => state.cart.itemList)
+// console.log("isLogin", isLogin);
 
   useEffect(() => {
     if (!isLogin) {
@@ -18,7 +18,7 @@ console.log("isLogin", isLogin);
     } else {
       navigate("/");
     }
-  }, [isLogin]);
+  }, []);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

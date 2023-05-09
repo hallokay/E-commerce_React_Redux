@@ -1,7 +1,7 @@
 import React from 'react'
 import back from "../../images/my-account.jpg";
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Section } from "./AuthCss"; 
 
 const Register = () => {
@@ -33,7 +33,6 @@ const Register = () => {
     </>
   );
 }
-const RegisterSection = styled.section`
-`
+
 
 export default Register
