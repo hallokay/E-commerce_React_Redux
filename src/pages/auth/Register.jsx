@@ -22,9 +22,9 @@ const Register = () => {
               <label htmlFor="user">Username * </label>
               <input name="user" type="text" required />
               <label htmlFor="psw">Password *</label>
-              <input name="psw" type="text" required />
+              <input name="psw" type="password" required />
               <label htmlFor="psw-re">Confirm Password *</label>
-              <input name="psw-re" type="text" required />
+              <input name="psw-re" type="password" required />
               <button className="button">Register</button>
               <Link to="/login">Login</Link>
             </form>
