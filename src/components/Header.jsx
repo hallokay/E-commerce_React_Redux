@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-// import Medicine from "../../assets/images/Medicine.svg";
+import Medicine from "../images/Medicine.svg";
 import { AiOutlineSearch } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, User } from "./index.js";
 import { useSelector } from "react-redux";
 
 const Header = () => {
   const [showHeader, setShowHeader] = useState(true);
   const isLogin = useSelector((state) => state.auth.isLogin);
+const navigate = useNavigate();
+
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -16,6 +18,10 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+   useEffect(() => {
+    if(!isLogin) navigate('/login')
+    else navigate('/')
+   }, [isLogin]);
 
   const handleScroll = () => {
     const currentScrollPosition = window.pageYOffset;
@@ -30,27 +36,27 @@ const Header = () => {
   return (
     <>
       {/* {showHeader && ( */}
-        <HeaderContainer style={{ display: showHeader ? "block" : "none" }}>
-          <Wrap className="flex">
-            <Logo>
-              <Link to="/">
-                <img src="logo" alt="logo" />
-              </Link>
-            </Logo>
-            {isLogin && (
-              <> 
-            <Search className="flex">
-              <AiOutlineSearch className="searchIcon" />
-              <input type="text" placeholder="Search..." />
-            </Search>
+      <HeaderContainer style={{ display: showHeader ? "block" : "none" }}>
+        <Wrap className="flex">
+          <Logo>
+            <Link to="/">
+              <img src={Medicine} alt="logo" />
+            </Link>
+          </Logo>
+          {isLogin && (
+            <>
+              <Search className="flex">
+                <AiOutlineSearch className="searchIcon" />
+                <input type="text" placeholder="Search..." />
+              </Search>
               <Account className="flexCenter">
                 <Card />
                 <User />
               </Account>
-              </>
-            )}
-          </Wrap>
-        </HeaderContainer>
+            </>
+          )}
+        </Wrap>
+      </HeaderContainer>
       {/* )} */}
     </>
   );
